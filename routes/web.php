@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Str;
+use App\Models\Berita;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\BeritaController;
 
@@ -8,6 +10,7 @@ use App\Http\Controllers\BeritaController;
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/tentang-kami', fn() => view('tentangkami'))->name('tentang');
 Route::get('/hubungi-kami', fn() => view('hubungikami'))->name('hubungi');
+Route::get('/berita/{slug}', [BeritaController::class, 'show']);
 
 // User bisa lihat daftar berita dan detail berita (publik)
 Route::get('/berita', [BeritaController::class, 'indexPublic'])->name('berita.index.public');
@@ -22,6 +25,15 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
     Route::get('/berita/{berita}/edit', [BeritaController::class, 'edit'])->name('admin.berita.edit');
     Route::put('/berita/{berita}', [BeritaController::class, 'update'])->name('admin.berita.update');
     Route::delete('/berita/{berita}', [BeritaController::class, 'destroy'])->name('admin.berita.destroy');
+});
+
+Route::get('/generate-slug', function () {
+    Berita::all()->each(function ($berita) {
+        $berita->slug = Str::slug($berita->judul) . '-' . uniqid();
+        $berita->save();
+    });
+
+    return 'Slug berhasil digenerate!';
 });
 
 require __DIR__.'/auth.php';

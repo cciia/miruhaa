@@ -95,9 +95,10 @@ class BeritaController extends Controller
     }
 
     // Menampilkan detail berita untuk user biasa
-    public function show($id)
+   public function show($slug)
     {
-        $berita = Berita::findOrFail($id);
-        return view('detail', compact('berita')); // pastikan ada view 'detail'
+        $berita = Berita::where('slug', $slug)->firstOrFail();
+        return view('detail', compact('berita'));
     }
+
 }

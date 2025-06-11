@@ -603,7 +603,7 @@
             }
         }
     </style>
-</head>
+</head> 
 <body>
     <!-- Header Top -->
     <div class="header-top">
@@ -684,7 +684,7 @@
                         <div class="news-date">📅 {{ $berita->created_at->format('d F Y') }}</div>
                         <h3 class="news-title">{{ $berita->judul }}</h3>
                         <p class="news-excerpt">{{ Str::limit(strip_tags($berita->isi), 100) }}</p>
-                        <a href="{{ route('berita.show.public', $berita->id) }}" class="read-more">Selengkapnya</a>
+                        <a href="{{ route('berita.show.public', $berita->slug) }}" class="read-more">Selengkapnya</a>
                     </div>
                 </div>
             @endforeach

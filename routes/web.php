@@ -27,13 +27,4 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
     Route::delete('/berita/{berita}', [BeritaController::class, 'destroy'])->name('admin.berita.destroy');
 });
 
-Route::get('/generate-slug', function () {
-    Berita::all()->each(function ($berita) {
-        $berita->slug = Str::slug($berita->judul) . '-' . uniqid();
-        $berita->save();
-    });
-
-    return 'Slug berhasil digenerate!';
-});
-
 require __DIR__.'/auth.php';

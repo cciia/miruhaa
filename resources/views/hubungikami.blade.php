@@ -324,28 +324,38 @@
         </nav>
     </header>
 
-    <!-- Main Content -->
-    <main class="main-content">
-        <div class="container">
-            <!-- Contact Section -->
+                <!-- Main Content -->
+                <main class="main-content">
+                    <div class="container">
+                        <!-- Contact Section -->
             <section class="contact-section">
                 <h2>Hubungi Kami</h2>
 
-                <div class="contact-item">
-                    <div class="contact-icon">📷</div>
-                    <div class="contact-text">@miruha06</div>
-                </div>
-                
-                <div class="contact-item">
-                    <div class="contact-icon">✉️</div>
-                    <div class="contact-text">miroudlotulhuda@gmail.com</div>
-                </div>
-                
-                <div class="contact-item">
-                    <div class="contact-icon">📱</div>
-                    <div class="contact-text">+62 857 0700 9311</div>
-                </div>
+                <!-- Instagram -->
+                <a href="https://www.instagram.com/miruha06" target="_blank" style="text-decoration: none; color: inherit;">
+                    <div class="contact-item">
+                        <div class="contact-icon">📷</div>
+                        <div class="contact-text">@miruha06</div>
+                    </div>
+                </a>
+
+                <!-- Email -->
+                <a href="mailto:miroudlotulhuda@gmail.com" style="text-decoration: none; color: inherit;">
+                    <div class="contact-item">
+                        <div class="contact-icon">✉️</div>
+                        <div class="contact-text">miroudlotulhuda@gmail.com</div>
+                    </div>
+                </a>
+
+                <!-- WhatsApp -->
+                <a href="https://wa.me/6285707009311" target="_blank" style="text-decoration: none; color: inherit;">
+                    <div class="contact-item">
+                        <div class="contact-icon">📱</div>
+                        <div class="contact-text">+62 857 0700 9311</div>
+                    </div>
+                </a>
             </section>
+
 
             <!-- Photo Section (formerly Map Section) -->
             <section class="photo-section">
@@ -368,7 +378,7 @@
                 </div>
                 
                 <div class="social-links">
-                    <a href="#"><span>📱 WhatsApp</span></a>
+                    <a href="#"><span>📱 +62 857 0700 9311</span></a>
                 </div>
                 <div class="social-links">
                     <a href="#"><span>📘 miroudlotulhuda</span></a>

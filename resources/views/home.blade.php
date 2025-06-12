@@ -100,7 +100,7 @@
             background-size: cover;
             background-position: center;
             color: white;
-            padding: 145px 5%;  
+            padding: 230px 5%;  
             text-align: left;
             margin-bottom: 20px;
         }
@@ -552,56 +552,83 @@
             overflow: hidden;
         }
         
-        /* Responsive Adjustments */
-        @media (max-width: 768px) {
-            .hero {
-                padding: 60px 5%;
-                text-align: center;
+       @media (max-width: 768px) {
+                .header-top,
+                .main-nav,
+                .hero,
+                .sambutan-achievement-container,
+                .news-section,
+                .profile-section {
+                    padding: 10px;
+                }
+
+                .main-nav {
+                    flex-direction: column;
+                    align-items: flex-start;
+                }
+
+                .nav-links {
+                    flex-direction: column;
+                    gap: 10px;
+                    width: 100%;
+                }
+
+                .sambutan-achievement-container {
+                    flex-direction: column;
+                }
+
+                .sambutan,
+                .achievement-section {
+                    width: 100%;
+                }
+
+                .sambutan {
+                    flex-direction: column;
+                    text-align: center;
+                }
+
+                .sambutan-img {
+                    flex: none;
+                    width: 100%;
+                }
+
+                .sambutan-img img {
+                    width: 100%;
+                }
+
+                .profile-content {
+                    flex-direction: column;
+                    align-items: center;
+                }
+
+                .profile-left,
+                .profile-right {
+                    width: 100%;
+                }
+
+                .news-grid {
+                    grid-template-columns: 1fr;
+                }
+
+                .featured-news img {
+                    height: auto;
+                }
             }
-            
-            .hero p {
-                margin-left: auto;
-                margin-right: auto;
-            }
-            
-            .sambutan {
-                flex-direction: column;
-            }
-            
-            .sambutan-img {
-                margin-bottom: 20px;
-            }
-            
-            .featured-news img {
-                height: 200px;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .header-top {
-                flex-direction: column;
-                gap: 10px;
-                text-align: center;
-            }
-            
-            .main-nav {
-                flex-direction: column;
-                gap: 15px;
-            }
-            
-            .nav-links {
-                flex-direction: column;
-                align-items: center;
-            }
-            
+
             .hero h1 {
-                font-size: 2rem;
+                font-size: 6vw;
             }
-            
+
             .hero h4 {
-                font-size: 1.2rem;
+                font-size: 4.5vw;
             }
-        }
+
+            .hero-button,
+            .nav-button {
+                padding: 12px 20px;
+                font-size: 1rem;
+            }
+
     </style>
 </head> 
 <body>
@@ -684,7 +711,9 @@
                         <div class="news-date">📅 {{ $berita->created_at->format('d F Y') }}</div>
                         <h3 class="news-title">{{ $berita->judul }}</h3>
                         <p class="news-excerpt">{{ Str::limit(strip_tags($berita->isi), 100) }}</p>
-                        <a href="{{ route('berita.show.public', $berita->slug) }}" class="read-more">Selengkapnya</a>
+                        <a href="{{ route('berita.show.public', ['slug' => $berita->slug]) }}" class="read-more">
+                            Selengkapnya
+                        </a>
                     </div>
                 </div>
             @endforeach

@@ -15,5 +15,14 @@ class Berita extends Model
         'isi',
         'gambar',
         'kategori',
+        'slug', 
     ];
+
+    protected static function booted()
+    {
+        static::creating(function ($berita) {
+            $berita->slug = \Str::slug($berita->judul) . '-' . time();
+        });
+    }
+
 }

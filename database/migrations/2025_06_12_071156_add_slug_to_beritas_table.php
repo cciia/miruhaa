@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::table('beritas', function (Blueprint $table) {
             $table->string('slug')->nullable()->after('id');
+            $table->unique('slug'); // Menjadikan slug unik
         });
     }
-
 
     /**
      * Reverse the migrations.
@@ -23,7 +23,8 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('beritas', function (Blueprint $table) {
-            //
+            $table->dropUnique(['slug']); 
+            $table->dropColumn('slug');   
         });
     }
 };

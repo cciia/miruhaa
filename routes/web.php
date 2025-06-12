@@ -10,11 +10,10 @@ use App\Http\Controllers\BeritaController;
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/tentang-kami', fn() => view('tentangkami'))->name('tentang');
 Route::get('/hubungi-kami', fn() => view('hubungikami'))->name('hubungi');
-Route::get('/berita/{slug}', [BeritaController::class, 'show']);
+Route::get('/berita/{slug}', [BeritaController::class, 'show'])->name('berita.show.public');
 
 // User bisa lihat daftar berita dan detail berita (publik)
 Route::get('/berita', [BeritaController::class, 'indexPublic'])->name('berita.index.public');
-Route::get('/berita/{id}', [BeritaController::class, 'show'])->name('berita.show.public');
 
 // Route admin, dengan middleware auth + admin
 Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {

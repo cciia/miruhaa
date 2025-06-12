@@ -37,7 +37,10 @@ class BeritaController extends Controller
             'gambar' => 'nullable|image|mimes:jpeg,png,jpg',
         ]);
 
-        $data = $request->only('judul', 'isi', 'kategori');
+       $data = $request->only('judul', 'isi', 'kategori');
+        $data['slug'] = Str::slug($request->judul) . '-' . time(); // ini penting!
+
+        // handle gambar...
         if ($request->hasFile('gambar')) {
             $gambar = $request->file('gambar');
             $filename = Str::slug($request->judul) . '-' . time() . '.' . $gambar->getClientOriginalExtension();
@@ -46,6 +49,8 @@ class BeritaController extends Controller
         }
 
         Berita::create($data);
+
+
 
         // Redirect ke route admin.berita.index karena ini admin CRUD
         return redirect()->route('admin.berita.index')->with('success', 'Berita berhasil ditambahkan.');
@@ -66,6 +71,8 @@ class BeritaController extends Controller
         ]);
 
         $data = $request->only('judul', 'isi', 'kategori');
+
+        $data['slug'] = Str::slug($request->judul) . '-' . time();
 
         if ($request->hasFile('gambar')) {
             if ($berita->gambar && Storage::exists('public/berita/' . $berita->gambar)) {

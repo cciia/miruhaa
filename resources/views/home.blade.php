@@ -100,7 +100,7 @@
             background-size: cover;
             background-position: center;
             color: white;
-            padding: 100px 5%;  
+            padding: 145px 5%;  
             text-align: left;
             margin-bottom: 20px;
         }

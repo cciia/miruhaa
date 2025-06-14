@@ -551,85 +551,72 @@
             border-radius: 5px;
             overflow: hidden;
         }
-        
-       @media (max-width: 768px) {
-                .header-top,
-                .main-nav,
-                .hero,
-                .sambutan-achievement-container,
-                .news-section,
-                .profile-section {
-                    padding: 10px;
-                }
 
-                .main-nav {
-                    flex-direction: column;
-                    align-items: flex-start;
-                }
+        @media (max-width: 768px) {
+            .hero {
+                padding: 60px 5%;
+                text-align: center;
+            }
+            
+            .hero p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            
+            .sambutan {
+                flex-direction: column;
+            }
+            
+            .sambutan-img {
+                margin-bottom: 20px;
+            }
+            
+            .featured-news img {
+                height: 200px;
+            }
+            
 
-                .nav-links {
-                    flex-direction: column;
-                    gap: 10px;
-                    width: 100%;
-                }
-
-                .sambutan-achievement-container {
-                    flex-direction: column;
-                }
-
-                .sambutan,
-                .achievement-section {
-                    width: 100%;
-                }
-
-                .sambutan {
-                    flex-direction: column;
-                    text-align: center;
-                }
-
-                .sambutan-img {
-                    flex: none;
-                    width: 100%;
-                }
-
-                .sambutan-img img {
-                    width: 100%;
-                }
-
-                .profile-content {
-                    flex-direction: column;
-                    align-items: center;
-                }
-
-                .profile-left,
-                .profile-right {
-                    width: 100%;
-                }
-
-                .news-grid {
-                    grid-template-columns: 1fr;
-                }
-
-                .featured-news img {
-                    height: auto;
-                }
+            .hamburger {
+                display: none;
+                font-size: 24px;
+                cursor: pointer;    
             }
 
-            .hero h1 {
-                font-size: 6vw;
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                background-color: white;
+                position: absolute;
+                top: 60px;
+                right: 5%;
+                width: 200px;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+                z-index: 100;
             }
 
-            .hero h4 {
-                font-size: 4.5vw;
+            .nav-links a {
+                padding: 10px 0;
+                border-bottom: 1px solid #eee;
+                width: 100%;
             }
 
-            .hero-button,
-            .nav-button {
-                padding: 12px 20px;
-                font-size: 1rem;
+           .nav-links.show {
+                display: flex;
             }
 
-    </style>
+            .hamburger {
+                display: block;
+                color: #333;
+                margin-left: auto;
+            }
+
+            .main-nav {
+                position: relative;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+        </style>
 </head> 
 <body>
     <!-- Header Top -->
@@ -640,18 +627,24 @@
         </div>
     </div>
     
-    <!-- Main Navigation -->
-    <nav class="main-nav">
-        <div class="logo">
-            <img src="/images/logomiruha.jpg" alt="Logo MI Roudlotul Huda">
-            <div class="logo-text">MI Roudlotul Huda<br>Wedoro, Klurak, Sidoarjo</div>
-        </div>
-       <div class="nav-links">
+   <!-- Main Navigation -->
+<nav class="main-nav">
+    <div class="logo">
+        <img src="/images/logomiruha.jpg" alt="Logo MI Roudlotul Huda">
+        <div class="logo-text">MI Roudlotul Huda<br>Wedoro, Klurak, Sidoarjo</div>
+    </div>
+
+    <!-- Hamburger Menu (for mobile) -->
+
+
+        <!-- Navigation Links -->
+        <div class="nav-links mobile-menu" id="mobileMenu">
             <a href="{{ url('/') }}" class="active">Beranda</a>
             <a href="{{ route('tentang') }}">Tentang Kami</a>
             <a href="{{ route('hubungi') }}">Hubungi Kami</a>
         </div>
     </nav>
+
     
     <!-- Hero Section with new background image -->
     <div class="hero">
@@ -822,14 +815,21 @@
                 </div>
                 
                 <div class="social-links">
-                    <a href="#"><span>📱 +62 857 0700 9311</span></a>
-                </div>
-                <div class="social-links">
-                    <a href="#"><span>✉️ miroudlotulhuda@gmail.com</span></a>
-                </div>
-                <div class="social-links">
-                    <a href="#"><span>📷 @miruha06</span></a>
-                </div>
+    <a href="https://wa.me/6285707009311" target="_blank">
+        <span>📱 +62 857 0700 9311</span>
+    </a>
+            </div>
+            <div class="social-links">
+                <a href="mailto:miroudlotulhuda@gmail.com">
+                    <span>✉️ miroudlotulhuda@gmail.com</span>
+                </a>
+            </div>
+            <div class="social-links">
+                <a href="https://www.instagram.com/miruha06" target="_blank">
+                    <span>📷 @miruha06</span>
+                </a>
+            </div>
+
             </div>
             
             <div class="footer-right">
@@ -841,6 +841,11 @@
             </div>
         </div>
     </div>
-    
+    <script>
+    function toggleMenu() {
+        const menu = document.getElementById('mobileMenu');
+        menu.classList.toggle('show');
+    }
+    </script>
 </body>
 </html>

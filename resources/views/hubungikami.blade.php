@@ -297,7 +297,50 @@
             .footer-left, .footer-right {
                 flex: 1;
             }
-        }
+
+            @media (max-width: 768px) { 
+            
+
+            .hamburger {
+                display: none;
+                font-size: 24px;
+                cursor: pointer;    
+            }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                background-color: white;
+                position: absolute;
+                top: 60px;
+                right: 5%;
+                width: 200px;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+                z-index: 100;
+            }
+
+            .nav-links a {
+                padding: 10px 0;
+                border-bottom: 1px solid #eee;
+                width: 100%;
+            }
+
+           .nav-links.show {
+                display: flex;
+            }
+
+            .hamburger {
+                display: block;
+                color: #333;
+                margin-left: auto;
+            }
+
+            .main-nav {
+                position: relative;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        } }
     </style>
 </head>
 <body>
@@ -312,16 +355,21 @@
         
          <!-- Main Navigation -->
         <nav class="main-nav">
-            <div class="logo">
-                <img src="/images/logomiruha.jpg" alt="Logo MI Roudlotul Huda">
-                <div class="logo-text">MI Roudlotul Huda<br>Wedoro, Klurak, Sidoarjo</div>
-            </div>
-            <div class="nav-links">
-                <a href="{{ url('/') }}" class="active">Beranda</a>
-                <a href="{{ route('tentang') }}">Tentang Kami</a>
-                <a href="{{ route('hubungi') }}">Hubungi Kami</a>
-            </div>
-        </nav>
+    <div class="logo">
+        <img src="/images/logomiruha.jpg" alt="Logo MI Roudlotul Huda">
+        <div class="logo-text">MI Roudlotul Huda<br>Wedoro, Klurak, Sidoarjo</div>
+    </div>
+
+    <!-- Hamburger Menu (for mobile) -->
+
+
+        <!-- Navigation Links -->
+        <div class="nav-links mobile-menu" id="mobileMenu">
+            <a href="{{ url('/') }}" class="active">Beranda</a>
+            <a href="{{ route('tentang') }}">Tentang Kami</a>
+            <a href="{{ route('hubungi') }}">Hubungi Kami</a>
+        </div>
+    </nav>
     </header>
 
                 <!-- Main Content -->
@@ -378,17 +426,21 @@
                 </div>
                 
                 <div class="social-links">
-                    <a href="#"><span>📱 +62 857 0700 9311</span></a>
+                    <a href="https://wa.me/6285707009311" target="_blank">
+                        <span>📱 +62 857 0700 9311</span>
+                    </a>
                 </div>
                 <div class="social-links">
-                    <a href="#"><span>📘 miroudlotulhuda</span></a>
+                    <a href="mailto:miroudlotulhuda@gmail.com">
+                        <span>✉️ miroudlotulhuda@gmail.com</span>
+                    </a>
                 </div>
                 <div class="social-links">
-                    <a href="#"><span>📷 @miroudlotulhuda</span></a>
+                    <a href="https://www.instagram.com/miruha06" target="_blank">
+                        <span>📷 @miruha06</span>
+                    </a>
                 </div>
-                <div class="social-links">
-                    <a href="#"><span>📞 031 123 456</span></a>
-                </div>
+
             </div>
             
             <div class="footer-right">
@@ -400,5 +452,11 @@
             </div>
         </div>
     </div>
+    <script>
+    function toggleMenu() {
+        const menu = document.getElementById('mobileMenu');
+        menu.classList.toggle('show');
+    }
+    </script>
 </body>
 </html>

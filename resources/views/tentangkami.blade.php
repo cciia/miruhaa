@@ -19,28 +19,28 @@
             line-height: 1.6;
         }
 
-        /* Header Top */
-        .header-top {
-            background-color: #4CAF50;
-            color: white;
-            padding: 8px 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 14px;
-        }
+            /* Header Top */
+            .header-top {
+                background-color: #4CAF50;
+                color: white;
+                padding: 8px 5%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                font-size: 14px;
+            }
 
-        .contact-info {
-            display: flex;
-            align-items: center;
-            gap: 30px;
-        }
+            .contact-info {
+                display: flex;
+                align-items: center;
+                gap: 30px;
+            }
 
-        .contact-info span {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
+            .contact-info span {
+                display: flex;
+                align-items: center;
+                gap: 5px;
+            }
 
        /* Navigation Styles */
         .main-nav {
@@ -426,7 +426,75 @@
                 grid-template-columns: 1fr;
                 gap: 30px;
             }
-        }
+
+            @media (max-width: 768px) {
+            .hero {
+                padding: 60px 5%;
+                text-align: center;
+            }
+            
+            .hero p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            
+            .sambutan {
+                flex-direction: column;
+            }
+            
+            .sambutan-img {
+                margin-bottom: 20px;
+            }
+            
+            .featured-news img {
+                height: 200px;
+            }
+            
+
+             .hamburger {
+                    display: block;
+                    position: absolute;
+                    top: 20px;
+                    right: 20px;
+                    font-size: 26px;
+                    cursor: pointer;
+                    z-index: 1000; /* biar muncul di atas */
+                }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                background-color: white;
+                position: absolute;
+                top: 60px;
+                right: 5%;
+                width: 200px;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+                z-index: 100;
+            }
+
+            .nav-links a {
+                padding: 10px 0;
+                border-bottom: 1px solid #eee;
+                width: 100%;
+            }
+
+           .nav-links.show {
+                display: flex;
+            }
+
+            .hamburger {
+                display: block;
+                color: #333;
+                margin-left: auto;
+            }
+
+            .main-nav {
+                position: relative;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        } }
     </style>
 </head>
 <body>
@@ -440,17 +508,20 @@
         </div>
         
         <!-- Main Navigation -->
-        <nav class="main-nav">
-            <div class="logo">
-                <img src="/images/logo.png" alt="Logo MI Roudlotul Huda">
-                <div class="logo-text">MI Roudlotul Huda <br>Wedoro, Klurak, Sidoarjo</div>
-            </div>
-            <div class="nav-links">
-                <a href="{{ url('/') }}" class="active">Beranda</a>
-                <a href="{{ route('tentang') }}">Tentang Kami</a>
-                <a href="{{ route('hubungi') }}">Hubungi Kami</a>
-            </div>
-        </nav>
+    <nav class="main-nav">
+    <div class="logo">
+        <img src="/images/logomiruha.jpg" alt="Logo MI Roudlotul Huda">
+        <div class="logo-text">MI Roudlotul Huda<br>Wedoro, Klurak, Sidoarjo</div>
+    </div>
+
+
+        <!-- Navigation Links -->
+        <div class="nav-links mobile-menu" id="mobileMenu">
+            <a href="{{ url('/') }}" class="active">Beranda</a>
+            <a href="{{ route('tentang') }}">Tentang Kami</a>
+            <a href="{{ route('hubungi') }}">Hubungi Kami</a>
+        </div>
+    </nav>
     </header>
 
     <!-- Main Content -->
@@ -583,16 +654,21 @@
                 </div>
                 
                 <div class="social-links">
-                    <a href="#"><span>📱 +62 857 0700 9311</span></a>
-                </div>
-                <div class="social-links">
-                    <a href="#"><span>✉️ miroudlotulhuda@gmail.com</span></a>
-                </div>
-                <div class="social-links">
-                    <a href="#"><span>📷 @miruha06</span></a>
-                </div>
+                <a href="https://wa.me/6285707009311" target="_blank">
+                    <span>📱 +62 857 0700 9311</span>
+                </a>
             </div>
-            
+            <div class="social-links">
+                <a href="mailto:miroudlotulhuda@gmail.com">
+                    <span>✉️ miroudlotulhuda@gmail.com</span>
+                </a>
+            </div>
+            <div class="social-links">
+                <a href="https://www.instagram.com/miruha06" target="_blank">
+                    <span>📷 @miruha06</span>
+                </a>
+            </div>
+            </div>
             <div class="footer-right">
                 <div class="footer-map">
                     <a href="https://maps.app.goo.gl/GXGbhuRiG6ThPVjm8" target="_blank">
@@ -603,5 +679,11 @@
         </div>
     </div>
     </footer>
+    <script>
+    function toggleMenu() {
+        const menu = document.getElementById('mobileMenu');
+        menu.classList.toggle('show');
+    }
+    </script>
 </body>
 </html>
